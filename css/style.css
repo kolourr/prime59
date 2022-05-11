@@ -1,0 +1,129 @@
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+
+
+body {
+     margin: 0;
+
+}
+
+:root{
+     --cell-size: 100px;
+     --xo-size: calc(var(--cell-size) * .9);
+}
+
+h1{
+     text-align: center;
+}
+
+
+.draggable-list {
+     width: 100vw;
+     height: 100vh; 
+     display: grid;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+     justify-content: center;
+     grid-template-columns: repeat(6, auto);
+     list-style-type: none;
+     padding: 0;
+ 
+}
+
+.draggable-list li.over .draggable {
+  background-color: darkgray
+} 
+
+
+
+
+.draggable-list li.right .person-name {
+  color: green
+} 
+
+.draggable-list li.wrong .person-name {
+  color: red;
+} 
+
+
+
+.number{
+     display: flex;
+     justify-content: center;
+}
+
+
+.draggable{
+     width: var(--cell-size);
+     height: var(--cell-size);
+     display: flex; 
+     justify-content: center;
+     align-items: center;
+     justify-items: center;
+     border: 1px solid black;
+     padding: relative;
+     cursor: pointer;
+     position: relative;
+     font-size: 1.5rem;
+
+}
+
+.person-name{
+     color:brown; 
+}
+
+.check-btn{
+     margin: auto;
+     position: absolute;
+     left: 46.5%;
+     bottom: -5%;
+     -ms-transform: translateY(-50%);
+     transform: translateY(-50%);
+     border: 3px solid green;
+     padding: 10px;
+     cursor: pointer;
+
+}
+
+.check-btn:active {
+  transform: scale(0.99); 
+}
+
+.check-btn:focus {
+  outline: none; 
+}
+ 
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header {
+
+}
+
+footer {
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
