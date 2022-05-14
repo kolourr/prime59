@@ -49,14 +49,15 @@ h1{
 }
 
 .draggable-list li.over .draggable {
-  background-color: darkgray
+  background-color: rgb(123, 5, 134)
 } 
 
 
 
 
 .draggable-list li.right .person-name {
-  color: green
+  color: green;
+ 
 } 
 
 .draggable-list li.wrong .person-name {
@@ -93,11 +94,13 @@ h1{
 .check-btn{
      margin: auto;
      position: absolute;
+     color: aliceblue;
+     background-color: blueviolet;
      left: 46.5%;
      bottom: -5%;
      -ms-transform: translateY(-50%);
      transform: translateY(-50%);
-     border: 3px solid green;
+     border: 3px solid rgb(0, 0, 0);
      padding: 10px;
      cursor: pointer;
 

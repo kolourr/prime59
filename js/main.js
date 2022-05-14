@@ -7,10 +7,10 @@ const prime59 = [ 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2,
 const listItems = []
 
 let dragStartIndex 
-
+ 
 createList()
 
-
+   
 //Insert numbers into DOM
 function createList() {
   [...prime59]
@@ -24,6 +24,7 @@ function createList() {
  
     const listItem  = document.createElement('li')
 
+ 
     listItem.setAttribute('data-index', index)
     listItem.innerHTML = `
         <span class="number">${index}</span>
@@ -35,5 +36,51 @@ function createList() {
     draggableList.appendChild(listItem)
   
   })
+
+  addEventListeners()
+}
+
+
+function dragStart(){
+  // console.log("start")
+}
+
+
+function dragOver(){
+  // console.log("over")
+}
+
+function dragDrop(){
+  // console.log("drop")
+}
+
+
+
+function dragEnter(){
+  // console.log("enter")
+}
+
+function dragLeave(){
+  // console.log("leave")
+}
+
+
+
+function addEventListeners(){
+  const draggables = document.querySelectorAll('.draggable')
+  const dragListItems = document.querySelectorAll('.draggable-list li')
+
+  draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', dragStart)
+  })
+
+  dragListItems.forEach(item => {
+    item.addEventListener('dragover', dragOver)
+    item.addEventListener('drop', dragDrop)
+    item.addEventListener('dragenter', dragEnter)
+    item.addEventListener('dragleave', dragLeave)
+  })
+
+
 }
 
