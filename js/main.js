@@ -11,6 +11,16 @@ function siteReload(){
 }
 
 
+const winningCombinations = [
+  [2,3,5,7,13,29],
+  [2,3,5,7,19,23], 
+  [2,3,5,13,17,19], 
+  [2,3,7,11,13,23], 
+  [2,3,7,11,17,19], 
+  [2,3,5,7,11,31]
+]
+
+let chosenCombo = winningCombinations[(Math.floor(Math.random() * (5 + 1)))]
 
 
 const prime59 = [ 2, 3, 5, 7, 13, 29,  2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29 ]
