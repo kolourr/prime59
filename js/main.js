@@ -25,8 +25,6 @@ let randomizeChosenCombo = chosenCombo
 .map(a => a.value)
 
 
-console.log(chosenCombo)
-console.log(randomizeChosenCombo)
 
 const resultMatrix =  solutionMatrix(randomizeChosenCombo)
 
@@ -40,6 +38,7 @@ function solutionMatrix(randomizeChosenCombo){
  
 
 const prime59 = randomizeChosenCombo.concat(resultMatrix[0]).concat(resultMatrix[1]).concat(resultMatrix[2]).concat(resultMatrix[3]).concat(resultMatrix[4]) 
+ 
 
 //store items 
 const listItems = []
@@ -51,13 +50,15 @@ createList()
    
 //Insert numbers into DOM
 function createList() {
-  [...prime59]
-  //We are setting a random number for all the values within the Prime 59 Array 
+
+  let firstSix = [...prime59].slice(0,6)
+  let nextSixty = [...prime59].slice(6)
   .map(a => ({value: a, sort: Math.random() }))
-  // // //Sorting the values based on the ascending random values 
   .sort((a,b) => a.sort - b.sort)
-  // // //This will map it back to an array for strings 
   .map(a => a.value)
+  let newArr = firstSix.concat(nextSixty)
+
+  newArr
   .forEach((person, index) => {
  
     const listItem  = document.createElement('li')
@@ -84,24 +85,18 @@ function createList() {
 
 
 function checkOrder(){
- 
-
   listItems.forEach((item, index) => {
     let number = item.querySelector('.draggable').innerText.trim()
 
     if(Number(number) == Number(prime59[index]))
     {
       item.classList.add('right')
-      
     }
     else {
       item.classList.remove('right')
       item.classList.add('wrong')
     }
   })
-
-
-
 }
 
 
