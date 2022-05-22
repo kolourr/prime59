@@ -7,9 +7,7 @@ restart.addEventListener('click', siteReload)
 
 function siteReload(){
   window.location.reload();
-
 }
-
 
 const winningCombinations = [
   [2,3,5,7,13,29],
@@ -21,9 +19,27 @@ const winningCombinations = [
 ]
 
 let chosenCombo = winningCombinations[(Math.floor(Math.random() * (5 + 1)))]
+let randomizeChosenCombo = chosenCombo
+.map(a => ({value: a, sort: Math.random() }))
+.sort((a,b) => a.sort - b.sort)
+.map(a => a.value)
 
 
-const prime59 = [ 2, 3, 5, 7, 13, 29,  2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29, 2, 3, 5, 7, 13, 29 ]
+console.log(chosenCombo)
+console.log(randomizeChosenCombo)
+
+const resultMatrix =  solutionMatrix(randomizeChosenCombo)
+
+function solutionMatrix(randomizeChosenCombo){
+ let arr = []
+  for(let i=1; i<randomizeChosenCombo.length; i++){
+    arr.push(randomizeChosenCombo.slice(i).concat(randomizeChosenCombo.slice(0,i) ) )
+  }
+  return arr
+}
+ 
+
+const prime59 = randomizeChosenCombo.concat(resultMatrix[0]).concat(resultMatrix[1]).concat(resultMatrix[2]).concat(resultMatrix[3]).concat(resultMatrix[4]) 
 
 //store items 
 const listItems = []
@@ -38,22 +54,21 @@ function createList() {
   [...prime59]
   //We are setting a random number for all the values within the Prime 59 Array 
   .map(a => ({value: a, sort: Math.random() }))
-  //Sorting the values based on the ascending random values 
+  // // //Sorting the values based on the ascending random values 
   .sort((a,b) => a.sort - b.sort)
-  //This will map it back to an array for strings 
+  // // //This will map it back to an array for strings 
   .map(a => a.value)
   .forEach((person, index) => {
  
     const listItem  = document.createElement('li')
 
     // <span class="number">${index}</span>
-
     listItem.setAttribute('data-index', index)
     listItem.innerHTML = `
         <div class="draggable" draggable="true">
         <p class="person-name">${person}</p>
         </div>`
-
+  
     listItems.push(listItem)
     draggableList.appendChild(listItem)
   
@@ -64,7 +79,7 @@ function createList() {
 
  
 
-
+ 
 
 
 
@@ -74,7 +89,8 @@ function checkOrder(){
   listItems.forEach((item, index) => {
     let number = item.querySelector('.draggable').innerText.trim()
 
-    if(Number(number) == Number(prime59[index])){
+    if(Number(number) == Number(prime59[index]))
+    {
       item.classList.add('right')
       
     }
